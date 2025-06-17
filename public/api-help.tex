@@ -1,0 +1,29 @@
+import { useEffect, useState } from "react";
+
+const API_KEY = "69fe8a2aef18d283cf003988091bfa1d"; // 🔁 Replace this with your actual key
+const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`;
+
+function App() {
+  const [movies, setMovies] = useState([]);
+
+
+  return (
+    <div className="App">
+      <h1>Popular Movies</h1>
+      <div className="movie-grid">
+        {movies.map((movie) => (
+          <div className="movie-card" key={movie.id}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+            />
+            <h3>{movie.title}</h3>
+            <p>{movie.release_date}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;
