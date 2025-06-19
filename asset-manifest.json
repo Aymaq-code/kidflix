@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/kidflix/static/css/main.70031d36.css",
-    "main.js": "/kidflix/static/js/main.7997e48b.js",
+    "main.css": "/kidflix/static/css/main.ba7dc474.css",
+    "main.js": "/kidflix/static/js/main.7e9997e7.js",
     "static/media/header-collage.jpg": "/kidflix/static/media/header-collage.a39805bc89de5c861a39.jpg",
+    "static/media/medum-header-image.jpg": "/kidflix/static/media/medum-header-image.bfa7adfb33fbaf48581a.jpg",
     "static/media/search.png": "/kidflix/static/media/search.198afa81880ce7cf60bd.png",
     "index.html": "/kidflix/index.html",
-    "main.70031d36.css.map": "/kidflix/static/css/main.70031d36.css.map",
-    "main.7997e48b.js.map": "/kidflix/static/js/main.7997e48b.js.map"
+    "main.ba7dc474.css.map": "/kidflix/static/css/main.ba7dc474.css.map",
+    "main.7e9997e7.js.map": "/kidflix/static/js/main.7e9997e7.js.map"
   },
   "entrypoints": [
-    "static/css/main.70031d36.css",
-    "static/js/main.7997e48b.js"
+    "static/css/main.ba7dc474.css",
+    "static/js/main.7e9997e7.js"
   ]
 }
