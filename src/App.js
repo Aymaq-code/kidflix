@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   const [movies, setMovies] = useState([]);
-  // const [watched, setWatched] = useState([]);
   const [search, setSearch] = useState("");
   const [allMovies, setAllMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -294,7 +293,7 @@ function MoviesDetail({ movies }) {
 function SearchBar({ search, onSearch }) {
   return (
     <div className="header-search">
-      <div className="test"></div>
+      <div className="search-icon"></div>
       <input
         type="text"
         placeholder="🎞️ Free cartoons, animations, fairy tales & more!"
@@ -380,16 +379,32 @@ function Footer() {
           reserved.
         </p>
         <div className="social-links">
-          <a href="https://www.facebook.com/yourprofile" target="_blank">
+          <a
+            href="https://www.facebook.com/yourprofile"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+          <a
+            href="https://www.linkedin.com/in/yourprofile"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <i className="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://github.com/Aymaq-code" target="_blank">
+          <a
+            href="https://github.com/Aymaq-code"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <i className="fab fa-github"></i>
           </a>
-          <a href="https://wa.me/0093708760475" target="_blank">
+          <a
+            href="https://wa.me/0093708760475"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             <i className="fab fa-whatsapp"></i>
           </a>
         </div>
