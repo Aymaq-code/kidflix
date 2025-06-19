@@ -183,6 +183,7 @@ body {
 .navbar-logIn {
   position: absolute;
   right: 70px;
+  top: 32px;
   font-family: sans-serif !important;
   border: 1px solid #ffffff95;
   padding: 0.8rem 2rem;
@@ -435,7 +436,7 @@ body {
   border-radius: 4px;
   height: 95%;
   width: 75px;
-  background-image: url("./search.png");
+  background-image: url("../public/images/search.png");
   background-size: cover;
   background-position: center;
 }
