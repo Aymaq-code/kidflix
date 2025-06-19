@@ -56,6 +56,7 @@ export default function App() {
     <div className="Kidflix">
       <Header>
         <Navbar />
+        <Menu />
         <HeaderTitle />
         <HeaderSubSignBtns />
       </Header>
@@ -83,68 +84,93 @@ function Header({ children }) {
 }
 
 function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-
-  // Close menu when clicking a menu link (mobile)
-  const handleLinkClick = () => {
-    if (menuOpen) setMenuOpen(false);
-  };
-
   return (
     <nav className="navbar">
       <a href="#" className="logo">
         🧸 Kidflix
       </a>
 
-      <div className="menu-icon" onClick={toggleMenu}>
-        {menuOpen ? "✖" : "☰"}
-      </div>
-
-      <ul className={`nav-links ${menuOpen ? "open" : ""}`}>
+      <ul className="nav-links">
         <li>
-          <a href="#" onClick={handleLinkClick}>
-            HOME
-          </a>
+          <a href="#">HOME</a>
         </li>
 
         <li className="new-list">
-          <a href="#" onClick={handleLinkClick}>
-            NEW
-          </a>
+          <a href="#">NEW</a>
           <ul>
             {["Superhero", "Classics", "Magical"].map((item) => (
               <li key={item}>
-                <a href="#" onClick={handleLinkClick}>
-                  {item}
-                </a>
+                <a href="#">{item}</a>
               </li>
             ))}
           </ul>
         </li>
 
         <li>
-          <a href="#" onClick={handleLinkClick}>
-            POPULAR
-          </a>
+          <a href="#">POPULAR</a>
         </li>
 
         <li>
-          <a href="#" onClick={handleLinkClick}>
-            CONTACT US
-          </a>
-        </li>
-        <li className="navbar-logIn">
-          <a href="#" onClick={handleLinkClick}>
-            Login
-          </a>
+          <a href="#">CONTACT US</a>
         </li>
       </ul>
+      <li>
+        <a href="#" className="navbar-logIn">
+          Login
+        </a>
+      </li>
     </nav>
   );
 }
+function Menu() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <>
+      <div className="hamburger-menu">
+        <ul className="hamburger-menu-head">
+          <li>
+            <a href="#">🧸 Kidflix</a>
+          </li>
+          <li className="menu-icon" onClick={toggleMenu}>
+            <span>{menuOpen ? "✖" : "☰"}</span>
+          </li>
+        </ul>
+      </div>
+      {menuOpen && (
+        <ul className="menuList">
+          <li>
+            <a href="#">HOME</a>
+          </li>
+
+          <li className="menuList-new">
+            <a href="#">NEW</a>
+            <ul className="new-list">
+              {["Superhero", "Classics", "Magical"].map((item) => (
+                <li key={item}>
+                  <a href="#">{item}</a>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          <li>
+            <a href="#">POPULAR</a>
+          </li>
+
+          <li>
+            <a href="#">CONTACT US</a>
+          </li>
+          <li>
+            <a href="#">Login</a>
+          </li>
+        </ul>
+      )}
+    </>
+  );
+}
 function HeaderTitle() {
   return (
     <div className="header-title">
@@ -179,6 +205,7 @@ function Box({ children }) {
 
 function MoviesDetail({ movies }) {
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [flippedCard, setFlippedCard] = useState(null);
 
   function handlePopup(movie) {
     setSelectedMovie(selectedMovie?.id === movie.id ? null : movie);
@@ -188,10 +215,18 @@ function MoviesDetail({ movies }) {
     setSelectedMovie(null);
   }
 
+  function handleCardFlip(movieId) {
+    setFlippedCard(flippedCard === movieId ? null : movieId);
+  }
+
   return (
     <section className="movies">
       {movies.map((movie) => (
-        <div className="box" key={movie.id}>
+        <div
+          className={`box ${flippedCard === movie.id ? "flipped" : ""}`}
+          key={movie.id}
+          onClick={() => handleCardFlip(movie.id)}
+        >
           <div className="box-inner">
             <div className="front">
               <img src={movie.image} alt={movie.title} />
@@ -205,7 +240,13 @@ function MoviesDetail({ movies }) {
               <p>
                 <strong>Score:</strong> {movie.rt_score}
               </p>
-              <button className="btn more" onClick={() => handlePopup(movie)}>
+              <button
+                className="btn more"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePopup(movie);
+                }}
+              >
                 More
               </button>
             </div>
@@ -223,8 +264,14 @@ function MoviesDetail({ movies }) {
             <button className="popup-close" onClick={closePopup}>
               &times;
             </button>
+
             <h2>{selectedMovie.title}</h2>
             <h3>{selectedMovie.original_title}</h3>
+            <div className="small-screen-dis">
+              <h5>{selectedMovie.original_title}</h5>
+              <h4>Discretion</h4>
+              <text>{selectedMovie.description}</text>
+            </div>
             <p>
               <strong>Director:</strong> {selectedMovie.director}
             </p>
@@ -251,14 +298,6 @@ function MoviesDetail({ movies }) {
         )}
       </div>
     </section>
-  );
-}
-
-function MoviesDetailPopup() {
-  return (
-    <div className="test">
-      <h1>i am popup</h1>
-    </div>
   );
 }
 
