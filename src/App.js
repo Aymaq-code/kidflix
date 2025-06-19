@@ -42,16 +42,6 @@ export default function App() {
     }
   }, [search, allMovies]);
 
-  // function handAddlWatchList(movie) {
-  //   setWatched((prev) =>
-  //     prev.some((m) => m.id === movie.id) ? prev : [...prev, movie]
-  //   );
-  // }
-
-  // function deleteWatchListMovie(movieId) {
-  //   setWatched((prev) => prev.filter((movie) => movie.id !== movieId));
-  // }
-
   return (
     <div className="Kidflix">
       <Header>
@@ -300,39 +290,6 @@ function MoviesDetail({ movies }) {
     </section>
   );
 }
-
-// function WatchListMovie({ watched, onDeleteWatchListMovie }) {
-//   return (
-//     <div className="watchLists">
-//       {watched.length === 0 ? (
-//         <p className="watchListEmptyMsg">
-//           Your watch list is empty. Add some movies!
-//         </p>
-//       ) : (
-//         <div className="movies">
-//           {watched.map((movie) => (
-//             <div className="box small-screen" key={movie.id}>
-//               <img src={movie.image} alt={movie.title} />
-//               <div className="box-text watch">
-//                 <h3>{movie.title}</h3>
-//                 <p>
-//                   Released {movie.release_date} / Score {movie.rt_score}
-//                 </p>
-//                 <p>Rating time: {movie.running_time}</p>
-//               </div>
-//               <button
-//                 className="watch-btn"
-//                 onClick={() => onDeleteWatchListMovie(movie.id)}
-//               >
-//                 Remove
-//               </button>
-//             </div>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// }
 
 function SearchBar({ search, onSearch }) {
   return (
