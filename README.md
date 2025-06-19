@@ -6,7 +6,7 @@ Welcome to **Kidflix**, a fun and colorful React.js project where users can disc
 
 ## 🔗 Live Demo
 
-👉 [Click here to view the live demo](https://your-live-demo-link.com)  
+👉 [Click here to view the live demo](https://aymaq-code.github.io/kidflix)
 _(Replace this with your deployed URL)_
 
 ---
