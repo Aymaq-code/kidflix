@@ -133,6 +133,7 @@ body {
     url("../public/images/header-collage.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
   height: 100vh;
 }
@@ -822,6 +823,14 @@ body {
 }
 
 @media screen and (max-width: 992px) {
+  .header {
+    background-image: linear-gradient(
+        to bottom,
+        var(--header-bg-color-1),
+        var(--header-bg-color-2)
+      ),
+      url("../public/images/medum-header-image.jpg");
+  }
   .navbar {
     padding: 2.5rem 0;
   }
